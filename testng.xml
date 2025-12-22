@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="MindtekElarAutomation">
+    <test name="UI Automation">
+        <groups>
+            <run>
+                <include name="testbase"/>
+
+<!--                <exclude name="negative"/>-->
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.FrameworkTest"/>
+
+        </classes>
+    </test>
+
+<!--    API and Mobile Test Groups are also in the test suite-->
+
+<!--    <test name="API Automation">-->
+<!--    </test>-->
+<!--    <test name="Mobile">-->
+<!--    </test>-->
+</suite>
