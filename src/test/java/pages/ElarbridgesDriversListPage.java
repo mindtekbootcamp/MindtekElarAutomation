@@ -39,7 +39,7 @@ public class ElarbridgesDriversListPage {
     private By driverCellByName(String driverName) {
         return By.xpath(
                 "//div[contains(@class,'MuiDataGrid-cell') and @data-field='full_name']" +
-                        "//div[@title='" + driverName + "']"
+                        "//div[@title=\"" + driverName + "\"]"
         );
     }
 
@@ -53,7 +53,7 @@ public class ElarbridgesDriversListPage {
     }
 
     private boolean scrollUntilFound(By targetBy) {
-        WebDriver driver = Driver.getDriver();
+        driver = Driver.getDriver();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
 
         WebElement scroller = driver.findElement(gridScroller);

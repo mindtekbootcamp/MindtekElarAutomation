@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.ConfigReader;
 import utilities.Driver;
 
 public class ElarbridgesCreateDriverPage {
@@ -23,8 +22,10 @@ public class ElarbridgesCreateDriverPage {
     @FindBy(css = "input[name='full_name']")
     public WebElement fullNameInput;
 
-    @FindBy(xpath = "//p[contains(@class,'MuiFormHelperText') and contains(., 'Required')]")
-    public WebElement requiredErrorMessage;
+    @FindBy(xpath = "//p[contains(@class,'MuiFormHelperText') and contains(., 'Required') " +
+            "or contains(., 'String must contain at most 50 character(s)') " +
+            "or contains(.,'Input must contain only alphanumeric and specific punctuation characters')]")
+    public WebElement nameErrorMessage;
 
     @FindBy(css = "input[name='is_staff']")
     public WebElement staffCheckbox;
@@ -41,6 +42,10 @@ public class ElarbridgesCreateDriverPage {
     @FindBy(xpath = "//button[contains(text(), 'Go to Edit')]")
     public WebElement gotoEditBtn;
 
+    @FindBy(xpath = "//button[normalize-space()='Back to list']")
+    public WebElement backToListBtn;
+
+
     public void createNewButtonClick(){
         wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.elementToBeClickable(createNewBtn));
@@ -54,10 +59,10 @@ public class ElarbridgesCreateDriverPage {
         gotoEditBtn.click();
     }
 
-    public String getRequiredErrorMessage() {
+    public String getNameErrorMessage() {
         wait = new WebDriverWait(Driver.getDriver(), 10);
-        wait.until(ExpectedConditions.visibilityOf(requiredErrorMessage));
-        return requiredErrorMessage.getText().trim();
+        wait.until(ExpectedConditions.visibilityOf(nameErrorMessage));
+        return nameErrorMessage.getText().trim();
     }
 
 
