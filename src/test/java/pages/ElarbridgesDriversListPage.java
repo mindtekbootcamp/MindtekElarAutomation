@@ -30,8 +30,6 @@ public class ElarbridgesDriversListPage {
     @FindBy(xpath = "//button[@role='tab' and contains(., 'All')]")
     public WebElement allTableBtn;
 
-    public By staffTableBtnBy = (By.xpath("//button[@role='tab' and contains(., 'Staff')]"));
-
     public By allTableBtnBy = (By.xpath("//button[@role='tab' and contains(., 'All')]"));
 
     private final By gridScroller = By.cssSelector(".MuiDataGrid-virtualScroller");
