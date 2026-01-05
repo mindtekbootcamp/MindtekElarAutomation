@@ -23,7 +23,7 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options = new ChromeOptions();
-                    options.setHeadless(false);
+                    options.setHeadless(true);
                     driver = new ChromeDriver(options);
                     break;
                 case "edge":
