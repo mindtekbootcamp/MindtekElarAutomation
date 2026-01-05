@@ -8,12 +8,12 @@ public class TestBase {
 
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(groups = {"testbase"})
     public void setup() {
         driver = Driver.getDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(groups = {"testbase"})
     public void teardown() {
         driver.quit();
     }
