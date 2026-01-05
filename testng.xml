@@ -4,6 +4,7 @@
         <groups>
             <run>
                 <include name="testbase"/>
+                <include name="smoke"/>
 
 <!--                <exclude name="negative"/>-->
             </run>
