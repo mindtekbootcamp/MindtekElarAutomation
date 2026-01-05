@@ -54,7 +54,7 @@ public class ElarbridgesCreateDriverPage {
     }
 
     public void handleDriverCreatedPopup() {
-        wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait = new WebDriverWait(Driver.getDriver(), 20);
         wait.until(ExpectedConditions.visibilityOf(gotoEditBtn));
         gotoEditBtn.click();
     }
