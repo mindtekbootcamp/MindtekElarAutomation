@@ -10,7 +10,8 @@
         </groups>
         <classes>
             <class name="tests.FrameworkTest"/>
-
+            <class name="tests.CreateDriverTest"/>
+            <class name="tests.FullNameFieldValidationTest"/>
         </classes>
     </test>
 
