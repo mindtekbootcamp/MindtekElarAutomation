@@ -1,4 +1,4 @@
-package pages;
+package elar.ui.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utilities.Driver;
+import elar.ui.utilities.Driver;
 
 import java.util.List;
 

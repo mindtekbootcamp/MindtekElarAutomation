@@ -10,16 +10,28 @@
             </run>
         </groups>
         <classes>
-            <class name="tests.FrameworkTest"/>
-            <class name="tests.CreateDriverTest"/>
-            <class name="tests.FullNameFieldValidationTest"/>
+            <class name="tests.ui.FrameworkTest"/>
+            <class name="tests.ui.CreateDriverTest"/>
+            <class name="tests.ui.FullNameFieldValidationTest"/>
         </classes>
     </test>
 
-<!--    API and Mobile Test Groups are also in the test suite-->
+    <test name="API Automation">
+        <groups>
+            <run>
+                <include name="api"/>
+                <include name="regression"/>
 
-<!--    <test name="API Automation">-->
-<!--    </test>-->
+                <exclude name="knownBug"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.api.CreateDriverApiTest"/>
+
+        </classes>
+    </test>
+
+
 <!--    <test name="Mobile">-->
 <!--    </test>-->
 </suite>
