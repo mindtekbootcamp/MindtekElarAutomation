@@ -1,15 +1,15 @@
-package tests;
+package tests.ui;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.ElarbridgesCasesPage;
-import pages.ElarbridgesCreateDriverPage;
-import pages.ElarbridgesDriversListPage;
-import pages.ElarbridgesLoginPage;
-import utilities.BrowserUtils;
-import utilities.ConfigReader;
-import utilities.TestBase;
+import elar.ui.pages.ElarbridgesCasesPage;
+import elar.ui.pages.ElarbridgesCreateDriverPage;
+import elar.ui.pages.ElarbridgesDriversListPage;
+import elar.ui.pages.ElarbridgesLoginPage;
+import elar.ui.utilities.BrowserUtils;
+import elar.ui.utilities.ConfigReader;
+import elar.ui.utilities.TestBase;
 
 public class FullNameFieldValidationTest extends TestBase {
 
