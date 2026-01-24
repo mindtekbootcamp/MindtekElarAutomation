@@ -1,0 +1,69 @@
+name: Elar Automation (Smoke + Regression)
+
+on:
+  # Smoke: every push + PR
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Regression: manual trigger
+  workflow_dispatch:
+
+  # Regression: nightly (~2:00 AM New York time)
+  schedule:
+    - cron: "0 7 * * *"
+
+jobs:
+  smoke:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run Smoke tests
+        run: mvn -B clean test -Dgroups=smoke
+
+      - name: Upload Smoke Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-surefire-reports
+          path: target/surefire-reports
+
+  regression:
+    name: Regression Tests
+    runs-on: ubuntu-latest
+
+    # Only run regression for manual trigger OR scheduled runs
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run Regression tests
+        run: mvn -B clean test -Dgroups=regression
+
+      - name: Upload Regression Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-surefire-reports
+          path: target/surefire-reports
