@@ -2,6 +2,7 @@ package tests.api;
 
 import elar.api.base.TestBaseApi;
 import elar.api.client.DriverClient;
+import elar.api.dataproviders.DriverDataProviders;
 import elar.api.pojos.CreateDriverRequest;
 import elar.api.utils.JsonUtils;
 import io.restassured.response.Response;
@@ -12,34 +13,20 @@ import org.testng.annotations.Test;
 
 public class CreateDriverApiTest extends TestBaseApi {
 
-    @Test(groups = {"regression", "api", "is_staff"})
-    public void validateDriverCreationWithIsStaffFalse() {
+    @Test(dataProvider = "isStaffValues", dataProviderClass = DriverDataProviders.class,
+            groups = {"regression", "api", "is_staff"})
+    public void validateDriverCreationWithIsStaff(boolean isStaff) {
 
         CreateDriverRequest createDriverRequest = new CreateDriverRequest();
         createDriverRequest.setDefaultValues();
         createDriverRequest.setFull_name("Patel Harsh");
-        createDriverRequest.setIs_staff(false);
+        createDriverRequest.setIs_staff(isStaff);
 
         DriverClient driverClient = new DriverClient();
         Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
         postResponse.then().log().all();
         postResponse.then().statusCode(200)
-                .body("is_staff", Matchers.equalTo(false));
-    }
-
-    @Test(groups = {"regression", "api", "is_staff"})
-    public void validateDriverCreationWithIsStaffTrue() {
-
-        CreateDriverRequest createDriverRequest = new CreateDriverRequest();
-        createDriverRequest.setDefaultValues();
-        createDriverRequest.setFull_name("Patel Harsh");
-        createDriverRequest.setIs_staff(true);
-
-        DriverClient driverClient = new DriverClient();
-        Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
-        postResponse.then().log().all();
-        postResponse.then().statusCode(200)
-                .body("is_staff", Matchers.equalTo(true));
+                .body("is_staff", Matchers.equalTo(isStaff));
     }
 
     @Test(groups = {"regression", "api", "is_staff"})
@@ -66,7 +53,7 @@ public class CreateDriverApiTest extends TestBaseApi {
                 .body("detail[0].msg", Matchers.equalTo("Input should be a valid boolean, unable to interpret input"));
     }
 
-    @Test(groups = {"regression", "api", "full_name"})
+    @Test(groups = {"regression", "smoke", "api", "full_name"})
     public void validateFullNameInCreateDriverPositive() {
 
         CreateDriverRequest createDriverRequest = new CreateDriverRequest();
@@ -80,60 +67,34 @@ public class CreateDriverApiTest extends TestBaseApi {
                 .body("full_name", Matchers.equalTo("Patel Harsh"));
     }
 
-    @Test(groups = {"regression", "api", "full_name"})
-    public void validateFullNameInCreateDriverMinimumLength() {
+    @Test(dataProvider = "fullNameLengthPositive", dataProviderClass = DriverDataProviders.class,
+            groups = {"regression", "api", "full_name"})
+    public void validateFullNameLengthInCreateDriverPositive(String fullName) {
 
         CreateDriverRequest createDriverRequest = new CreateDriverRequest();
         createDriverRequest.setDefaultValues();
-        createDriverRequest.setFull_name("H");
+        createDriverRequest.setFull_name(fullName);
 
         DriverClient driverClient = new DriverClient();
         Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
         postResponse.then().log().all();
         postResponse.then().statusCode(200)
-                .body("full_name", Matchers.equalTo("H"));
+                .body("full_name", Matchers.equalTo(fullName));
     }
 
-    @Test(groups = {"regression", "api", "full_name"})
-    public void validateFullNameInCreateDriverMaximumLength() {
+    @Test(dataProvider = "fullNameLengthNegative", dataProviderClass = DriverDataProviders.class,
+            groups = {"regression", "api", "full_name"})
+    public void validateFullNameLengthInCreateDriverNegative(String fullName, String expectedErrorMsg) {
 
         CreateDriverRequest createDriverRequest = new CreateDriverRequest();
         createDriverRequest.setDefaultValues();
-        createDriverRequest.setFull_name("hfkalkjdnddasdfghjklcvbnmertyukljhgdsaqwedcvfrtgby");
-
-        DriverClient driverClient = new DriverClient();
-        Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
-        postResponse.then().log().all();
-        postResponse.then().statusCode(200)
-                .body("full_name", Matchers.equalTo("hfkalkjdnddasdfghjklcvbnmertyukljhgdsaqwedcvfrtgby"));
-    }
-
-    @Test(groups = {"regression", "api", "full_name"})
-    public void validateFullNameInCreateDriverMaximumLengthNegative() {
-
-        CreateDriverRequest createDriverRequest = new CreateDriverRequest();
-        createDriverRequest.setDefaultValues();
-        createDriverRequest.setFull_name("HfkalkjdnddasdfghjklcvbnmertyukljhgdsaqwedcvfrtgbyA");
+        createDriverRequest.setFull_name(fullName);
 
         DriverClient driverClient = new DriverClient();
         Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
         postResponse.then().log().all();
         postResponse.then().statusCode(422)
-                .body("detail[0].msg", Matchers.equalTo("String should have at most 50 characters"));
-    }
-
-    @Test(groups = {"regression", "api", "full_name"})
-    public void validateFullNameInCreateDriverWithEmptyValue() {
-
-        CreateDriverRequest createDriverRequest = new CreateDriverRequest();
-        createDriverRequest.setDefaultValues();
-        createDriverRequest.setFull_name("");
-
-        DriverClient driverClient = new DriverClient();
-        Response postResponse = driverClient.createDriver(jsonSpec, createDriverRequest);
-        postResponse.then().log().all();
-        postResponse.then().statusCode(422)
-                .body("detail[0].msg", Matchers.equalTo("String should have at least 1 character"));
+                .body("detail[0].msg", Matchers.equalTo(expectedErrorMsg));
     }
 
     @Test(groups = {"regression", "api", "full_name"})
