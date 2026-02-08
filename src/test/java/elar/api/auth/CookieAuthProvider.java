@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class CookieAuthProvider {
     public static AuthContext loginAndGetCookies() {
         WebDriver driver = null;
@@ -21,7 +23,7 @@ public class CookieAuthProvider {
                     .sendKeys(ConfigReader.getProperty("ebPassword"));
             driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
 
-            new WebDriverWait(driver,15)
+            new WebDriverWait(driver, Duration.ofSeconds(15))
                     .until(ExpectedConditions.urlContains("/cases/list"));
 
             Cookie access = driver.manage().getCookieNamed("Access");

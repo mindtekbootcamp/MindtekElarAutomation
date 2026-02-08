@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import elar.ui.utilities.Driver;
 
+import java.time.Duration;
 import java.util.List;
 
 public class ElarbridgesDriversListPage {
@@ -64,7 +65,7 @@ public class ElarbridgesDriversListPage {
 
                 jse.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
 
-                new WebDriverWait(driver, 5)
+                new WebDriverWait(driver, Duration.ofSeconds(10))
                         .until(d -> !d.findElements(targetBy).isEmpty());
                 return true;
             }

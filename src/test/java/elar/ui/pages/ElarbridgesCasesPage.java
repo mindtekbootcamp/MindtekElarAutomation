@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import elar.ui.utilities.Driver;
 
+import java.time.Duration;
+
 public class ElarbridgesCasesPage {
 
     WebDriver driver;
@@ -14,7 +16,7 @@ public class ElarbridgesCasesPage {
 
     public ElarbridgesCasesPage() {
         driver = Driver.getDriver();
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 

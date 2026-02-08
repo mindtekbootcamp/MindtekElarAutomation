@@ -18,8 +18,6 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
-
 public class CreateAddressApiTest extends TestBaseApi {
 
     @Test(groups = {"regression", "smoke", "api", "address"})

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.math.MathContext;
+import java.time.Duration;
 import java.util.Random;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class BrowserUtils {
      * @param element
      */
     public static void waitForElementToBeClickable(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -99,7 +100,7 @@ public class BrowserUtils {
      */
     public static void typeAndTab(WebElement element, String text) {
         WebDriver driver = Driver.getDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
 
@@ -133,7 +134,7 @@ public class BrowserUtils {
      */
     public static void clickSafely(WebElement element) {
         WebDriver driver = Driver.getDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         By muiOverlay = By.cssSelector(
                 ".MuiBackdrop-root, .MuiDialog-root, .MuiPopover-root, .MuiMenu-root"
         );
@@ -166,7 +167,7 @@ public class BrowserUtils {
 
     public static void clickSafelyBy(By locator) {
         WebDriver driver = Driver.getDriver();
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 
         By muiOverlay = By.cssSelector(".MuiBackdrop-root, .MuiDialog-root, .MuiPopover-root, .MuiMenu-root");
 
