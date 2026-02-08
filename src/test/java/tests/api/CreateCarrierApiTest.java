@@ -56,7 +56,7 @@ public class CreateCarrierApiTest extends TestBaseApi {
                 .body("detail[0].msg", Matchers.equalTo(expectedErrorMessage));
     }
 
-    @Test(groups = {"regression", "api", "carrier"})
+    @Test(groups = {"regression", "smoke", "api", "carrier"})
     public void validateCreateCarrierApiWithValidMcNumber() {
 
         CreateCarrierRequest createCarrierRequest = CarrierRequestFactory.defaultCarrier();
@@ -132,7 +132,7 @@ public class CreateCarrierApiTest extends TestBaseApi {
                 .body("detail[0].msg", Matchers.equalTo(expectedErrorMessage));
     }
 
-    @Test(groups = {"regression", "api", "carrier"})
+    @Test(groups = {"regression", "smoke", "api", "carrier"})
     public void validateCreateCarrierApiWithValidDotNumber() {
 
         CreateCarrierRequest createCarrierRequest = CarrierRequestFactory.defaultCarrier();

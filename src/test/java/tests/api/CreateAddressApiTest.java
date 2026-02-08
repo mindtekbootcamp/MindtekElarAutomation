@@ -22,7 +22,7 @@ import static io.restassured.RestAssured.given;
 
 public class CreateAddressApiTest extends TestBaseApi {
 
-    @Test(groups = {"regression", "api", "address"})
+    @Test(groups = {"regression", "smoke", "api", "address"})
     public void validateCreateAddressPositive() {
 
         CreateAddressRequest createAddressRequest = new CreateAddressRequest();

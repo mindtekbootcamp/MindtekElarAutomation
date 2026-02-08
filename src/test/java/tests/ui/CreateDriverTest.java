@@ -49,7 +49,7 @@ public class CreateDriverTest extends TestBase {
         Assert.assertTrue(elarbridgesDriversListPage.isDriverDisplayed(fullName));
     }
 
-    @Test(groups = {"regression", "smoke", "elarbridges", "staffcheckbox"})
+    @Test(groups = {"regression", "elarbridges", "staffcheckbox"})
     public void validateStaffCheckboxDefaultAndBehavior() {
         driver.get(ConfigReader.getProperty("elarbridgesURL"));
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();
@@ -67,7 +67,7 @@ public class CreateDriverTest extends TestBase {
 
     }
 
-    @Test(groups = {"regression", "smoke", "elarbridges", "backtolistbtn"})
+    @Test(groups = {"regression", "elarbridges", "backtolistbtn"})
     public void validateBackToListButtonBehavior() {
         driver.get(ConfigReader.getProperty("elarbridgesURL"));
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();
