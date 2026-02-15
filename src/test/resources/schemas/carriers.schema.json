@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "alerts": {
+      "type": "array"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "full_address": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "city",
+        "full_address",
+        "id",
+        "name",
+        "state",
+        "uuid",
+        "zip_code"
+      ]
+    },
+    "carrier_name": {
+      "type": "string"
+    },
+    "carrier_type": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "mc_number": {
+      "type": "string"
+    },
+    "dot_number": {
+      "type": "string"
+    },
+    "ifta": {
+      "type": "boolean"
+    },
+    "insurance": {
+      "type": "string"
+    },
+    "policy_expiration": {
+      "type": "string"
+    },
+    "policy_number": {
+      "type": "string"
+    },
+    "other_licenses": {
+      "type": "boolean"
+    },
+    "license_name": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "abbreviation": {
+      "type": "string"
+    },
+    "contacts_phone": {
+      "type": "array"
+    },
+    "contacts_fax": {
+      "type": "array"
+    },
+    "contacts_email": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "abbreviation",
+    "address",
+    "alerts",
+    "carrier_name",
+    "carrier_type",
+    "contacts_email",
+    "contacts_fax",
+    "contacts_phone",
+    "created_at",
+    "dot_number",
+    "id",
+    "ifta",
+    "insurance",
+    "license_name",
+    "mc_number",
+    "other_licenses",
+    "policy_expiration",
+    "policy_number",
+    "status",
+    "updated_at",
+    "uuid"
+  ]
+}

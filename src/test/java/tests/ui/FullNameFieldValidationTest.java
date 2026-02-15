@@ -1,15 +1,15 @@
-package tests;
+package tests.ui;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.ElarbridgesCasesPage;
-import pages.ElarbridgesCreateDriverPage;
-import pages.ElarbridgesDriversListPage;
-import pages.ElarbridgesLoginPage;
-import utilities.BrowserUtils;
-import utilities.ConfigReader;
-import utilities.TestBase;
+import elar.ui.pages.ElarbridgesCasesPage;
+import elar.ui.pages.ElarbridgesCreateDriverPage;
+import elar.ui.pages.ElarbridgesDriversListPage;
+import elar.ui.pages.ElarbridgesLoginPage;
+import elar.ui.utilities.BrowserUtils;
+import elar.ui.utilities.ConfigReader;
+import elar.ui.utilities.TestBase;
 
 public class FullNameFieldValidationTest extends TestBase {
 
@@ -49,7 +49,7 @@ public class FullNameFieldValidationTest extends TestBase {
         };
     }
 
-    @Test(groups = {"regression", "smoke", "elarbridges", "fullName"}, dataProvider = "createDriverData")
+    @Test(groups = {"regression", "elarbridges", "fullName"}, dataProvider = "createDriverData")
     public void validateFullNameEnforcesMinAndMaxLength(
             String scenario,
             String fullName,
@@ -95,7 +95,7 @@ public class FullNameFieldValidationTest extends TestBase {
                 {"John O'Neil", "10/10/2029", "12/31/2029"}
         };
     }
-    @Test(groups = {"regression", "smoke", "elarbridges", "fullName"}, dataProvider = "validCharName")
+    @Test(groups = {"regression", "elarbridges", "fullName"}, dataProvider = "validCharName")
     public void validateFullNameAcceptsValidCharacters(String fullName, String driversLicenseExp, String medicalLicenseExp) {
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();
         ElarbridgesCasesPage elarbridgesCasesPage = new ElarbridgesCasesPage();
@@ -128,7 +128,7 @@ public class FullNameFieldValidationTest extends TestBase {
                 {"Connor$McGregor", "10/10/2029", "12/31/2029"}
         };
     }
-    @Test(groups = {"regression", "smoke", "elarbridges", "fullName"}, dataProvider = "invalidCharName")
+    @Test(groups = {"regression", "elarbridges", "fullName"}, dataProvider = "invalidCharName")
     public void validateFullNameRejectsInvalidCharacters(String fullName, String driversLicenseExp, String medicalLicenseExp) {
         String expectedErrorMessage = "Input must contain only alphanumeric and specific punctuation characters";
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();

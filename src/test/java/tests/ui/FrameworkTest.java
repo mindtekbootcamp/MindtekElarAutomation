@@ -1,9 +1,9 @@
-package tests;
+package tests.ui;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utilities.ConfigReader;
-import utilities.TestBase;
+import elar.ui.utilities.ConfigReader;
+import elar.ui.utilities.TestBase;
 
 public class FrameworkTest extends TestBase {
 

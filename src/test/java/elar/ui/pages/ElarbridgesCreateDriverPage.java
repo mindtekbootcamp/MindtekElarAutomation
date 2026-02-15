@@ -1,4 +1,4 @@
-package pages;
+package elar.ui.pages;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.Driver;
+import elar.ui.utilities.Driver;
+
+import java.time.Duration;
 
 public class ElarbridgesCreateDriverPage {
 
@@ -47,20 +49,20 @@ public class ElarbridgesCreateDriverPage {
 
 
     public void createNewButtonClick(){
-        wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(createNewBtn));
         createNewBtn.sendKeys(Keys.ENTER);
 
     }
 
     public void handleDriverCreatedPopup() {
-        wait = new WebDriverWait(Driver.getDriver(), 20);
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(gotoEditBtn));
         gotoEditBtn.click();
     }
 
     public String getNameErrorMessage() {
-        wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(nameErrorMessage));
         return nameErrorMessage.getText().trim();
     }

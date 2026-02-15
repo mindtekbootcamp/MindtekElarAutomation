@@ -1,14 +1,14 @@
-package tests;
+package tests.ui;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ElarbridgesCasesPage;
-import pages.ElarbridgesCreateDriverPage;
-import pages.ElarbridgesDriversListPage;
-import pages.ElarbridgesLoginPage;
-import utilities.BrowserUtils;
-import utilities.ConfigReader;
-import utilities.TestBase;
+import elar.ui.pages.ElarbridgesCasesPage;
+import elar.ui.pages.ElarbridgesCreateDriverPage;
+import elar.ui.pages.ElarbridgesDriversListPage;
+import elar.ui.pages.ElarbridgesLoginPage;
+import elar.ui.utilities.BrowserUtils;
+import elar.ui.utilities.ConfigReader;
+import elar.ui.utilities.TestBase;
 
 public class CreateDriverTest extends TestBase {
 
@@ -49,7 +49,7 @@ public class CreateDriverTest extends TestBase {
         Assert.assertTrue(elarbridgesDriversListPage.isDriverDisplayed(fullName));
     }
 
-    @Test(groups = {"regression", "smoke", "elarbridges", "staffcheckbox"})
+    @Test(groups = {"regression", "elarbridges", "staffcheckbox"})
     public void validateStaffCheckboxDefaultAndBehavior() {
         driver.get(ConfigReader.getProperty("elarbridgesURL"));
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();
@@ -67,7 +67,7 @@ public class CreateDriverTest extends TestBase {
 
     }
 
-    @Test(groups = {"regression", "smoke", "elarbridges", "backtolistbtn"})
+    @Test(groups = {"regression", "elarbridges", "backtolistbtn"})
     public void validateBackToListButtonBehavior() {
         driver.get(ConfigReader.getProperty("elarbridgesURL"));
         ElarbridgesLoginPage elarbridgesLoginPage = new ElarbridgesLoginPage();

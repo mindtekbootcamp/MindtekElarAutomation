@@ -1,4 +1,4 @@
-package utilities;
+package elar.ui.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
